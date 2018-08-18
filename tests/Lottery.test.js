@@ -3,7 +3,6 @@ const Web3 = require('web3');
 const web3 = new Web3(ganache.provider());
 const compiledContract = require('../compile');
 
-
 describe('Lottery Contract', () => {
 
     beforeEach( async () => {
@@ -62,6 +61,20 @@ describe('Lottery Contract', () => {
         expect(players[1]).toEqual(accounts[1]);
         expect(players[2]).toEqual(accounts[2]);
         expect(players.length).toBe(3);
+    });
+
+    it('should require a minimum amount of ether to enter', async () => {
+        try{
+            await lottery.methods.enter().send({
+                from: accounts[0],
+                value: 200
+            });
+            
+            fail(); //executes and fails the test if the above await didn't throw an error
+            
+        }catch (err){
+            expect(err).toBeDefined();
+        }
     });
 });
 
