@@ -9,6 +9,10 @@
   "author": "Parsh",
   "license": "ISC",
   "dependencies": {
-    "solc": "^0.4.24"
+    "ganache-cli": "^6.1.8",
+    "jest": "^23.5.0",
+    "solc": "^0.4.24",
+    "truffle-hdwallet-provider": "0.0.6",
+    "web3": "^1.0.0-beta.35"
   }
 }
