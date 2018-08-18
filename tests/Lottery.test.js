@@ -67,7 +67,7 @@ describe('Lottery Contract', () => {
         try{
             await lottery.methods.enter().send({
                 from: accounts[0],
-                value: 200
+                value: '200'
             });
             
             fail(); //executes and fails the test if the above await didn't throw an error
@@ -75,6 +75,47 @@ describe('Lottery Contract', () => {
         }catch (err){
             expect(err).toBeDefined();
         }
+    });
+
+    it('should only allow the manager to call pickWinner ', async () => {
+        
+        try{
+            await lotter.methods.pickWinner().send({
+                from: accounts[1]
+            });
+            fail();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+    }); 
+
+    it('should send all the money to the (single) winner and reset the players array', async () => {
+
+        await lottery.methods.enter().send({
+            from: accounts[1],
+            value: web3.utils.toWei('2', 'ether')
+        });
+
+        const currentBal = await web3.eth.getBalance(accounts[1]);
+
+        lotteryBalance = await web3.eth.getBalance(lottery.options.address);
+        expect(parseInt(lotteryBalance)).toEqual(parseInt(web3.utils.toWei('2', 'ether')));
+
+        await lottery.methods.pickWinner().send({
+            from: accounts[0]
+        });
+        const finalBal = await web3.eth.getBalance(accounts[1]);
+        const diff = finalBal - currentBal  
+
+        expect(diff).toEqual(parseInt(web3.utils.toWei('2', 'ether')));
+        
+        const players = await lottery.methods.getPlayers().call({
+            from: accounts[0]
+        });
+        expect(players.length).toBe(0);
+
+        lotteryBalance = await web3.eth.getBalance(lottery.options.address);
+        expect(parseInt(lotteryBalance)).toEqual(0);
     });
 });
 
