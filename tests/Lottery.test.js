@@ -1,16 +1,16 @@
 const ganache = require('ganache-cli');
-const Web3 = require('Web3');
+const Web3 = require('web3');
 const web3 = new Web3(ganache.provider());
-const {interface, bytecode} = require('../compile');
+const compiledContract = require('../compile');
 
 
 describe('Lottery Contract', () => {
 
     beforeEach( async () => {
         accounts = await web3.eth.getAccounts();
-        lottery = await new web3.eth.Contract(JSON.parse(interface))
+        lottery = await new web3.eth.Contract(JSON.parse(compiledContract.interface))
             .deploy({
-                data: bytecode
+                data: compiledContract.bytecode
             })
             .send({
                 from: accounts[0],
@@ -18,6 +18,8 @@ describe('Lottery Contract', () => {
             });
     });
 
-    
+    it('should deploy the contract', () => {
+        expect(lottery.options.address).toBeDefined();
+    })
 });
 
