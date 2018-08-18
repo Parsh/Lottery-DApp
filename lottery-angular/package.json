@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "node patch.js"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +22,9 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
+    "mdbootstrap": "^4.5.9",
     "rxjs": "^6.0.0",
+    "web3": "^1.0.0-beta.35",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
