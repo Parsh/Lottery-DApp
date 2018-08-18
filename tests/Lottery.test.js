@@ -20,6 +20,22 @@ describe('Lottery Contract', () => {
 
     it('should deploy the contract', () => {
         expect(lottery.options.address).toBeDefined();
-    })
+    });
+
+    it('should allow an account to enter the lottery', async () => {
+        
+        await lottery.methods.enter().send({
+            from: accounts[0],
+            value: web3.utils.toWei('0.1', 'ether')
+        });
+
+        const players = await lottery.methods.getPlayers().call({
+            from: accounts[0]
+        });
+
+        expect(players.length).toBe(1);
+        expect(players[0]).toEqual(accounts[0]);
+
+    });
 });
 
