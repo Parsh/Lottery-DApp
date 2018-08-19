@@ -10,3 +10,9 @@ body {
   background-repeat:   no-repeat;
   background-position: center;
 }
+
+@media (max-width: 767px) {
+  .col-sm-12 {
+      margin-top:40px;
+  }
+}

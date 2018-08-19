@@ -81,25 +81,32 @@ class App extends Component {
         </div>
         
         <div className = "row" style={{marginTop:100}}>
-          <div className="col-md-4 offset-md-1 text-center">
+          <div className="col-sm-12 col-md-4 offset-md-1 text-center">
             <Enter
             onSubmit = {this.onSubmit}
             value = {this.state.value}
             onChange = {(event) => this.setState({value: event.target.value})}
             />
           </div>
-          <div className="col-md-4 offset-md-2 text-center">
+          <div className="col-sm-12 col-md-4 offset-md-2 text-center">
             <Manager pickWinner = {this.pickWinner}/>
           </div>
         </div>
 
-        <div className = "row" style={{marginTop:70}}>
-          <div className = "col-md-5 offset-md-4  text-center">
+        <div className = "row" style={{marginTop:65}}>
+          <div className = "col-sm-12 text-center">
             <h4>{this.state.message}</h4>
             </div>  
         </div> 
 
-      </div>
+        <div className="card container-fluid" style={{marginTop:50}}>
+          <div className="card-body text-center">
+              We expect you to either have MetaMask or a Wallet enabled browser, to use the Lottery DApp.
+              <br/>
+          </div>
+        </div>
+
+     </div>
     );
   }
 }
