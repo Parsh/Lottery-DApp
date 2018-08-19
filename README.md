@@ -1,6 +1,6 @@
 # Lottery DApp
 
-Lottery DApp, as the name implies, is a decentralized application whose fundamental aspect is its lottery smart contract which is deployed on the Ethereum blockchain and is responsible for conducting lotteries in a fair manner.
+Lottery DApp is a decentralized application whose fundamental aspect is its Lottery Smart Contract which is deployed on the Ethereum blockchain and is responsible for conducting lotteries in a fair manner. The frontend for the DApp is built using React which interacts with the Smart Contract using Web3.
 
 ## Using the Lottery DApp 
 
