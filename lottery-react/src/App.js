@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
+
+import Jumbotron from './components/jumbotron'; 
+import Enter from './components/enter';
+import Manager from './components/manage';
 
 class App extends Component {
   
@@ -69,35 +72,26 @@ class App extends Component {
 
     return (
       <div>
-        <h1> Lottery Contract</h1>
-        <p>
-          This lottery is managed by: {this.state.manager}. <br/>
-          Currently {this.state.players.length} enteries, 
-          competing to win {web3.utils.fromWei(this.state.balance, 'ether')} ether! 
-        </p>
+        <Jumbotron 
+        manager={this.state.manager} 
+        players={this.state.players}
+        balance={this.state.balance} />
 
         <hr />
 
-      <form onSubmit = {this.onSubmit}>
-        <h4>Want to try your luck? (Amount to enter > 0.01 ether)</h4>
-        <div>
-          <label>Amount of ether to enter</label>
-          <input 
-          value = {this.state.value}
-          onChange = {event => this.setState({value: event.target.value})}
-          />
-        </div>
-        <button>Enter</button>
-      </form>
+        <Enter
+        onSubmit = {this.onSubmit}
+        value = {this.state.value}
+        onChange = {(event) => this.setState({value: event.target.value})}
+        />
 
-      <hr/>
+        <hr/>
+      
+        <Manager pickWinner = {this.pickWinner}/>
+      
+        <hr/>
 
-      <h3> Ready to pick a winner (Manager Only)?</h3>
-      <button onClick = {this.pickWinner}>Pick a winner!</button>
-
-      <hr/>
-
-      <h2>{this.state.message}</h2>
+        <h2>{this.state.message}</h2>
       
       </div>
     );
