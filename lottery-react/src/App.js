@@ -14,7 +14,8 @@ class App extends Component {
   state = { //ES6 equivalent to the code above (while converting this code via babel to ES5, 
     manager: "",     //such variable (state) initializations are automatically put into a contructor)
     players: [],
-    balance: ""
+    balance: "",
+    value: ""
   };
 
   async componentDidMount(){ //runs only once, when the component is rendered to the screen for the first time
@@ -27,6 +28,16 @@ class App extends Component {
 
     this.setState({manager, players, balance});
   }
+
+  onSubmit = async (event) => {
+    event.preventDefault(); //making sure that the form doesn't attemp to submit itself in a classic html way
+  
+    const accounts = await web3.eth.getAccounts();
+    await lottery.methods.enter().send({ //for the current version of web3, we do have to mention from property while sending transaction
+      from: accounts[0],
+      value: web3.utils.toWei(this.state.value, 'ether')
+    });
+  }
   
   render() {
     return (
@@ -34,8 +45,24 @@ class App extends Component {
         <h1> Lottery Contract</h1>
         <p>
           This lottery is managed by: {this.state.manager}. <br/>
-          Currently {this.state.players.length} people entered, competing to win {this.state.balance} ether! 
+          Currently {this.state.players.length} people entered, 
+          competing to win {web3.utils.fromWei(this.state.balance, 'ether')} ether! 
         </p>
+
+        <hr />
+
+      <form onSubmit = {this.onSubmit}>
+        <h4>Want to try your luck?</h4>
+        <div>
+          <label>Amount of ether to enter</label>
+          <input 
+          value = {this.state.value}
+          onChange = {event => this.setState({value: event.target.value})}
+          />
+        </div>
+        <button>Enter</button>
+      </form>
+
       </div>
     );
   }
