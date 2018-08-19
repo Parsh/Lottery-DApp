@@ -81,14 +81,14 @@ class App extends Component {
         </div>
         
         <div className = "row" style={{marginTop:100}}>
-          <div className="col-md-6 text-center">
+          <div className="col-md-4 offset-md-1 text-center">
             <Enter
             onSubmit = {this.onSubmit}
             value = {this.state.value}
             onChange = {(event) => this.setState({value: event.target.value})}
             />
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-4 offset-md-1 text-center">
             <Manager pickWinner = {this.pickWinner}/>
           </div>
         </div>
