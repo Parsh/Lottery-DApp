@@ -1,10 +1,10 @@
 # Lottery DApp
 
-Lottery DApp, as the name implies, is a decentralized application. The core aspect of the DApp is its lottery smart contract which is deployed on the Ethereum blockchain and is responsible for conducting lotteries in a fair manner.
+Lottery DApp, as the name implies, is a decentralized application whose fundamental aspect is its lottery smart contract which is deployed on the Ethereum blockchain and is responsible for conducting lotteries in a fair manner.
 
 ## Using the Lottery DApp 
 
-Using the DApp is pretty straightforward; you can see and interact with the DApp at (Lottery DApp)[https://lottery-dapp.herokuapp.com/].
+Using the DApp is pretty straightforward; you can see and interact with the DApp at [Lottery DApp](https://lottery-dapp.herokuapp.com/).
 
 > The DApp is in Alpha stage, hence there are no validations and checks applied, therefore users are requested to follow the standard interaction approach.
 
