@@ -99,9 +99,9 @@ class App extends Component {
             </div>  
         </div> 
 
-        <div className="card container-fluid" style={{marginTop:50}}>
+        <div className="card container-fluid " style={{marginTop:50}}>
           <div className="card-body text-center">
-              We expect you to either have MetaMask or a Wallet enabled browser, to use the Lottery DApp.
+              We expect you to either have MetaMask or a Wallet enabled browser, operating over Rinkeby n/w, to use the Lottery DApp.
               <br/>
           </div>
         </div>
