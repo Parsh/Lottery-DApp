@@ -71,28 +71,32 @@ class App extends Component {
   render() {
 
     return (
-      <div>
-        <Jumbotron 
-        manager={this.state.manager} 
-        players={this.state.players}
-        balance={this.state.balance} />
+      <div className="container-fluid">
 
-        <hr />
+        <div className="row">
+          <Jumbotron 
+          manager={this.state.manager} 
+          players={this.state.players}
+          balance={this.state.balance} />
+        </div>
+        
+        <div className = "row" style={{marginTop:100}}>
+          <div className="col-md-6 text-center">
+            <Enter
+            onSubmit = {this.onSubmit}
+            value = {this.state.value}
+            onChange = {(event) => this.setState({value: event.target.value})}
+            />
+          </div>
+          <div className="col-md-6 text-center">
+            <Manager pickWinner = {this.pickWinner}/>
+          </div>
+        </div>
 
-        <Enter
-        onSubmit = {this.onSubmit}
-        value = {this.state.value}
-        onChange = {(event) => this.setState({value: event.target.value})}
-        />
+        <div className = "row" style={{marginTop:50}}>
+          <h4>{this.state.message}</h4>  
+        </div> 
 
-        <hr/>
-      
-        <Manager pickWinner = {this.pickWinner}/>
-      
-        <hr/>
-
-        <h2>{this.state.message}</h2>
-      
       </div>
     );
   }

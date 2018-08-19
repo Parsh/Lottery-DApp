@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.jumbo {
+  background-image:    url(./assets/blockchain.jpg);
+  background-size:     cover;  
+  background-repeat:   no-repeat;
+  background-position: center;
+}
