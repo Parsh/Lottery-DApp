@@ -23,7 +23,8 @@ const deploy = async () => {
             gas: '1000000'
         });
 
-    console.log("Contract Deployed! Contract Address: ", lottery.options.address)
+    console.log("Contract Interface (ABI): ", compiledContract.interface);
+    console.log("Contract Deployed! Contract Address: ", lottery.options.address);
 
 }
 
