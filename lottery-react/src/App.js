@@ -38,7 +38,7 @@ class App extends Component {
   
     const accounts = await web3.eth.getAccounts();
 
-    this.setState({message: "Entering you into the lottery [Waiting for transaction success]..."})
+    this.setState({message: "Entering you into the lottery [Waiting for transaction success]"})
 
     await lottery.methods.enter().send({ //for the current version of web3, we do have to mention from property while sending transaction
       from: accounts[0],
@@ -88,13 +88,15 @@ class App extends Component {
             onChange = {(event) => this.setState({value: event.target.value})}
             />
           </div>
-          <div className="col-md-4 offset-md-1 text-center">
+          <div className="col-md-4 offset-md-2 text-center">
             <Manager pickWinner = {this.pickWinner}/>
           </div>
         </div>
 
-        <div className = "row" style={{marginTop:50}}>
-          <h4>{this.state.message}</h4>  
+        <div className = "row" style={{marginTop:70}}>
+          <div className = "col-md-5 offset-md-4  text-center">
+            <h4>{this.state.message}</h4>
+            </div>  
         </div> 
 
       </div>

@@ -2,7 +2,8 @@ import React from 'react';
 
 const Enter = ({value, onChange, onSubmit}) => {
    return (
-        <div className="card hoverable">
+       <div className = "z-depth-4">
+        <div className="card">
         <div className="card-body">
             <h2 className="card-title">Want to try your luck?</h2>
             <br/>
@@ -17,6 +18,8 @@ const Enter = ({value, onChange, onSubmit}) => {
             <button className="btn btn-primary" onClick = {onSubmit}>Enter the Lottery</button>
         </div>
         </div>
+        </div>
+
    );
 }
 
