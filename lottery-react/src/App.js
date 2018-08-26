@@ -93,6 +93,12 @@ class App extends Component {
     try {
       const accounts = await web3.eth.getAccounts();
 
+      if (accounts[0] !== this.state.manager) {
+        throw Error(
+          "You are not the manager of this lottery, therefore, you can't pick a winner"
+        );
+      }
+
       await lottery.methods.pickWinner().send({
         from: accounts[0]
       });
