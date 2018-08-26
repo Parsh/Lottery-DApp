@@ -2,29 +2,25 @@
 
 Lottery DApp is a decentralized application whose fundamental aspect is its Lottery Smart Contract which is deployed on the Ethereum blockchain and is responsible for conducting lotteries in a fair manner. The frontend for the DApp is built using React which interacts with the Smart Contract using Web3.
 
-## Using the Lottery DApp 
+## Using the Lottery DApp
 
 Using the DApp is pretty straightforward; you can see and interact with the DApp at [Lottery DApp](https://lottery-dapp.herokuapp.com/).
-
-> The DApp is in Alpha stage, hence there are no validations and checks applied, therefore users are requested to follow the standard interaction approach.
 
 ### Important Instructions
 
 In order to properly interact with the DApp, you would either require the Metamask extension or a Wallet-enabled browser such as Brave and authenticate the transaction so as to enter the lottery. Also, please hold on for about 15-30 seconds, as the transaction would need that much time to be mined on the Ethereum blockchain and propagate the transaction receipt back to the DApp.
 
-
-Note: Do not try to use the pick a winner component, unless you've been explicitly designated as a manager for the lottery. 
+Note: Do not try to use the pick a winner component, unless you've been explicitly designated as a manager for the lottery.
 
 > If you've got your ethers stuck into the DApp then please write to me at parsh.cosmos11@gmail.com, I'll surely help you with getting back your ethers.
 
 ## Interested in getting those hands dirty? Fetch a local copy and tune
 
-Following instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+Following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-Lottery DApp is built using React and the Node.js javascript runtime. Therefore, you'll need [Node](https://nodejs.org/en/) version 8.0 or above (npm would come along the ride) in order successfully construct the project and [React](https://reactjs.org/) to build the frontend.  
-
+Lottery DApp is built using React and the Node.js javascript runtime. Therefore, you'll need [Node](https://nodejs.org/en/) version 8.0 or above (npm would come along the ride) in order successfully construct the project and [React](https://reactjs.org/) to build the frontend.
 
 ### Installing
 
@@ -62,7 +58,6 @@ You can now view lottery-react in the browser.
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.
-
 ```
 
 ## Running the tests
@@ -71,7 +66,7 @@ Let's have a look at how to run the automated tests for this system in order to 
 
 ### Prerequisites
 
-The tests for Lottery DApp are written using Jest, therefore, you have to install [jest](https://www.npmjs.com/package/jest) using the following command (this would be done in the Lottery-DApp directory and not in lottery-react): 
+The tests for Lottery DApp are written using Jest, therefore, you have to install [jest](https://www.npmjs.com/package/jest) using the following command (this would be done in the Lottery-DApp directory and not in lottery-react):
 
 ```
 $ npm install jest --save-dev
@@ -95,4 +90,4 @@ Time:        15.01s, estimated 22s
 Ran all test suites.
 ```
 
-Note: These tests are performed on the local Ethereum network (using ganache), therefore they would complete pretty quickly. However, to test contract deployment on an actual public testnet(Rinkeby) use the `test` method on the `deploy` method in the deploy.js (i.e. uncomment the `.then(test)`).   
+Note: These tests are performed on the local Ethereum network (using ganache), therefore they would complete pretty quickly. However, to test contract deployment on an actual public testnet(Rinkeby) use the `test` method on the `deploy` method in the deploy.js (i.e. uncomment the `.then(test)`).

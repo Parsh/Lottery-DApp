@@ -19,7 +19,8 @@ class App extends Component {
     players: [],
     balance: '',
     value: '',
-    loading: false,
+    loadingEnter: false,
+    loadingPick: false,
     errorMessage: '',
     sucessMessage: '',
     firefoxCORSError: false
@@ -48,10 +49,14 @@ class App extends Component {
     this.setState({
       errorMessage: '',
       sucessMessage: '',
-      loading: true
+      loadingEnter: true
     });
 
     try {
+      if (parseFloat(this.state.value) < 0.011) {
+        throw Error('Please enter a value more than the specified minimum');
+      }
+
       const accounts = await web3.eth.getAccounts();
 
       await lottery.methods.enter().send({
@@ -62,7 +67,7 @@ class App extends Component {
 
       this.setState({
         sucessMessage: "Cheers! You've successfully entered into the lottery",
-        loading: false,
+        loadingEnter: false,
         players: await lottery.methods.getPlayers().call(),
         balance: await web3.eth.getBalance(lottery.options.address)
       });
@@ -74,7 +79,7 @@ class App extends Component {
         err.message =
           'Metamask (operating over Rinkeby n/w) is required to create campaign! Please check if you are signed into metamask.';
       }
-      this.setState({ errorMessage: err.message, loading: false });
+      this.setState({ errorMessage: err.message, loadingEnter: false });
     }
   };
 
@@ -82,7 +87,7 @@ class App extends Component {
     this.setState({
       errorMessage: '',
       sucessMessage: '',
-      loading: true
+      loadingPick: true
     });
 
     try {
@@ -94,7 +99,7 @@ class App extends Component {
 
       this.setState({
         sucessMessage: 'Yay! A winner is picked.',
-        loading: false,
+        loadingPick: false,
         players: await lottery.methods.getPlayers().call(),
         balance: await web3.eth.getBalance(lottery.options.address)
       });
@@ -106,7 +111,7 @@ class App extends Component {
         err.message =
           'Metamask (operating over Rinkeby n/w) is required to create campaign! Please check if you are signed into metamask.';
       }
-      this.setState({ errorMessage: err.message, loading: false });
+      this.setState({ errorMessage: err.message, loadingPick: false });
     }
   };
 
@@ -167,11 +172,15 @@ class App extends Component {
             <Enter
               onSubmit={this.onSubmit}
               value={this.state.value}
+              loading={this.state.loadingEnter}
               onChange={event => this.setState({ value: event.target.value })}
             />
           </div>
           <div className="col-sm-12 col-md-4 offset-md-2 text-center">
-            <Manager pickWinner={this.pickWinner} />
+            <Manager
+              loading={this.state.loadingPick}
+              pickWinner={this.pickWinner}
+            />
           </div>
         </div>
         <div className="row" style={{ marginTop: 65 }}>
