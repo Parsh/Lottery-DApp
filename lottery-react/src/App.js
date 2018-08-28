@@ -23,12 +23,18 @@ class App extends Component {
     loadingPick: false,
     errorMessage: '',
     sucessMessage: '',
+    otherNetwork: null,
     firefoxCORSError: false
   };
 
   async componentDidMount() {
     //runs only once, when the component is rendered to the screen for the first time
     try {
+      const network = await web3.eth.net.getNetworkType();
+      if (network !== 'rinkeby') {
+        this.setState({ otherNetwork: network });
+      }
+
       const manager = await lottery.methods.manager().call();
       //we don't need configure call (putting the from property) as the provider that we hijacked
       //from metamask has a default account (which is the first account we are logged into @Metamask)
@@ -122,6 +128,23 @@ class App extends Component {
   };
 
   render() {
+    let networkError = this.state.otherNetwork ? (
+      <div
+        className="alert alert-danger z-depth-2 text-center animated fadeIn"
+        role="alert"
+        style={{ fontSize: '25px', marginTop: '75px' }}
+      >
+        <div className="mt-3 mb-3">
+          You are on the{' '}
+          <strong>{this.state.otherNetwork.toUpperCase()}</strong> network. At
+          this moment in time, Ethstarter operates only on the{' '}
+          <strong>Rinkeby</strong> network. Therefore, in order to use
+          Ethstarter, please switch the network type in your Metamask extension
+          to Rinkeby.
+        </div>
+      </div>
+    ) : null;
+
     let errorAlert, successAlert;
 
     if (this.state.errorMessage) {
@@ -172,7 +195,7 @@ class App extends Component {
             balance={this.state.balance}
           />
         </div>
-        {corsError} {errorAlert} {successAlert}
+        {corsError} {errorAlert} {successAlert} {networkError}
         <div className="row" style={{ marginTop: 100 }}>
           <div className="col-sm-12 col-md-4 offset-md-1 text-center">
             <Enter
