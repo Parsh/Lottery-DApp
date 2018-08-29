@@ -137,10 +137,10 @@ class App extends Component {
         <div className="mt-3 mb-3">
           You are on the{' '}
           <strong>{this.state.otherNetwork.toUpperCase()}</strong> network. At
-          this moment in time, Ethstarter operates only on the{' '}
-          <strong>Rinkeby</strong> network. Therefore, in order to use
-          Ethstarter, please switch the network type in your Metamask extension
-          to Rinkeby.
+          this moment in time, Lottery DApp operates only on the{' '}
+          <strong>Rinkeby</strong> network. Therefore, in order to use the
+          Lottery DApp, please switch the network in your Metamask extension to
+          Rinkeby.
         </div>
       </div>
     ) : null;
@@ -181,7 +181,7 @@ class App extends Component {
         <div className="mt-3 mb-3">
           Cross-Origin Request Blocked <strong>@Firefox</strong>.<br />
           We strongly recommend you to use browsers like Chrome, Brave or any
-          other Wallet-enabled browser in order to interact with Ethstarter.
+          other Wallet-enabled browser in order to interact with Lottery DApp.
         </div>
       </div>
     ) : null;
